@@ -1,0 +1,71 @@
+:root {
+  --primary: #6e00ff;
+  --primary-dark: #4a00b0;
+  --secondary: #00f7ff;
+  --dark: #0f0f1a;
+  --darker: #070710;
+  --light: #f0f0f5;
+  --accent: #ff00aa;
+  --success: #00ff88;
+  --warning: #ffaa00;
+  --error: #ff0044;
+  --glass: rgba(15, 15, 26, 0.5);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--darker);
+  color: var(--light);
+  min-height: 100vh;
+  background-image: 
+    radial-gradient(circle at 25% 25%, var(--primary-dark) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, var(--accent) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 600;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Glow effects */
+.glow-primary {
+  text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+}
+
+.glow-secondary {
+  text-shadow: 0 0 10px var(--secondary), 0 0 20px var(--secondary);
+}
+
+.glow-accent {
+  text-shadow: 0 0 10px var(--accent), 0 0 20px var(--accent);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
