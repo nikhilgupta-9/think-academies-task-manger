@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Container, Form, Button, Alert, Card } from 'react-bootstrap';
 import axios from 'axios';
-import Header from '../../Components/Header';
+import Header from '../../Components/Loader';
+import Loader from '../../Components/Loader';
 
 const Register = ({ setIsAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ const Register = ({ setIsAuthenticated }) => {
   });
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -24,26 +26,33 @@ const Register = ({ setIsAuthenticated }) => {
     e.preventDefault();
     setError('');
     setSuccess('');
+    setLoading(true);
 
     const { name, age, mobile, email, password } = formData;
     if (!name || !age || !mobile || !email || !password) {
       setError('Please fill in all fields');
+      setLoading(false);
       return;
     }
 
+    const API_URL = import.meta.env.VITE_SITE_URL + '/api/register';
+
     try {
-      const res = await axios.post('http://localhost:5000/api/register', formData);
+      const res = await axios.post(API_URL, formData);
       setSuccess('Registered successfully! Redirecting...');
       setIsAuthenticated(true);
       setTimeout(() => navigate('/login'), 2000);
     } catch (err) {
       const msg = err.response?.data?.error || 'Registration failed';
       setError(msg);
+    } finally{
+      setLoading(false);
     }
   };
 
   return (
     <>
+    {loading && <Loader />};
       <Container className="d-flex justify-content-center align-items-center" style={{ minHeight: '89vh', paddingTop: '1rem' }}>
         <Card style={{ width: '100%', maxWidth: '450px' }} className="p-4 shadow">
           <div className="text-center mb-4">

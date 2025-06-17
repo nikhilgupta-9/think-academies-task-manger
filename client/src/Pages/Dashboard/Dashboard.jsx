@@ -5,6 +5,8 @@ import Navbar from './Navbar';
 import TaskList from '../../Components/TaskList';
 import EditTaskForm from '../../Components/EditTaskForm';
 import { TaskProvider, useTasks } from '../../Context/TaskContext';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import '../../styles/Dashboard.css';
 
 const DashboardContent = ({ onLogout }) => {

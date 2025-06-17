@@ -1,12 +1,15 @@
 import axios from 'axios';
+const API_URL = import.meta.env.VITE_SITE_URL + '/api/tasks';
 
-const API_URL = "http://localhost:5000/api/tasks"; // ✅ trailing slash removed
+// const API_URL = "http://localhost:5000/api/tasks"; 
+// const API_URL = "https://backend-task-manger-production.up.railway.app/api/tasks";
+
 
 // ✅ Set token in Authorization header
 const setAuthToken = (token) => {
   if (token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    console.log("📤 Setting token:", token);
+    // console.log("📤 Setting token:", token);
   } else {
     delete axios.defaults.headers.common['Authorization'];
   }
