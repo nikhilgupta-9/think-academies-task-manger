@@ -49,7 +49,7 @@ root/
 - **Backend**: Node.js, Express.js
 - **Database**: MongoDB Atlas
 - **Authentication**: JWT (JSON Web Tokens)
-- **Deployment**: Vercel (Frontend), Railway (Backend)
+- **Deployment**: Hostinger (Frontend), Render (Backend)
 - **Version Control**: Git + GitHub
 
 ---
@@ -71,6 +71,8 @@ root/
 ## 🛠️ Installation & Setup
 
 ### Prerequisites:
+- REact Js
+- Express.js
 - Node.js
 - MongoDB Atlas Account
 - Git
